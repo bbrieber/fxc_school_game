@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="fxc_school?game"
+config/name="fxc_school_game"
+run/main_scene="res://scenes/speed_math.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
