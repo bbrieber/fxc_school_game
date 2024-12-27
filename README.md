@@ -3,8 +3,8 @@
 ## Speed calculator
 fill the missing fields of a math Formular in a given time frame
 
-# formular definition
-
+# expression definition
+term [ operator term] 
 ## modes minmal
 - addition 
 - subtraction
