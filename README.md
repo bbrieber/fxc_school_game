@@ -3,9 +3,16 @@
 ## Speed calculator
 fill the missing fields of a math Formular in a given time frame
 
-# modes
-addition 
-subtraction
-greater
-smaller
+# formular definition
+
+## modes minmal
+- addition 
+- subtraction
+- multiplication 
+- division 
+
+## equality
+- equality
+- greater
+- smaller
 
