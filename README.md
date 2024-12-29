@@ -7,15 +7,12 @@ fill the missing fields of a math Formular in a given time frame
 term [ operator term] 
 
 
-n = max num
-
+```
 k + j =  i
 
-```
+n = max num
 k = rand(0, n)
-
 j = rand(0, n - k)
-
 i = k+j
 ```
 
