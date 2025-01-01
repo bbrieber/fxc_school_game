@@ -19,6 +19,9 @@ i = k+j
 ## modes minmal
 - addition 
 - subtraction
+
+## additional modes
+
 - multiplication 
 - division 
 
@@ -27,3 +30,9 @@ i = k+j
 - greater
 - smaller
 
+# next steps
+
+- add success/failure logic
+- add score mechanic
+- create real Formulars
+- parse player input
