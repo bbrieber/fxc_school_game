@@ -2,6 +2,7 @@ extends Control
 
 
 @export var formular_controller : FormularControler
+@export var label :Label 
 
 var current_result:int
 var initialized:bool = false
@@ -11,6 +12,7 @@ func _ready() -> void:
 
 func reset()->void:
 	initialized = false
+	label.text = ""
 
 func create_result(num:int)->void:
 	if not initialized:
@@ -18,6 +20,13 @@ func create_result(num:int)->void:
 		current_result = num
 	else:
 		current_result = current_result* 10 + num
+	label.text = str(current_result)
+	
+
+func remove_digit()->void:
+	if initialized:
+		current_result = current_result / 10 
+		label.text = str(current_result)
 	
 func check_formular()->void:
 	formular_controller.solve_formular(current_result)
@@ -45,5 +54,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		create_result(8)
 	elif event.is_action_pressed("fxc_9"):
 		create_result(9)
+	elif event.is_action_pressed("fxc_erase"):
+		remove_digit()
 	check_formular()
 	pass

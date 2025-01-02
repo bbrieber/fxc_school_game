@@ -25,5 +25,5 @@ func solve_formular(solution:int)-> void:
 	formular_actor_instance.check_formular(solution)
 
 
-func on_formular_actor_destroyed(_result:bool)->void:
+func on_formular_actor_destroyed(_success:bool,_result:int)->void:
 	spawn_formular_actor()

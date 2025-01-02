@@ -36,7 +36,7 @@ grow_horizontal = 2
 script = ExtResource("1_irbh7")
 formular_actor = ExtResource("2_cxiui")
 
-[node name="InputNode" type="Control" parent="Control" node_paths=PackedStringArray("formular_controller")]
+[node name="InputNode" type="Control" parent="Control" node_paths=PackedStringArray("formular_controller", "label")]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -47,27 +47,71 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("2_2g4i3")
 formular_controller = NodePath("../FormularController")
+label = NodePath("VBoxContainer/ColorRect/Label")
 
-[node name="ColorRect2" type="ColorRect" parent="Control/InputNode"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/InputNode"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -271.0
 grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.678431, 0.254902, 0.254902, 0.407843)
+grow_vertical = 0
 
-[node name="Area2D" type="Area2D" parent="Control/InputNode/ColorRect2"]
-position = Vector2(584, 0)
+[node name="ColorRect" type="ColorRect" parent="Control/InputNode/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Area2D" type="Area2D" parent="Control/InputNode/VBoxContainer/ColorRect"]
+position = Vector2(584, 4)
 script = ExtResource("2_gdrju")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/InputNode/ColorRect2/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/InputNode/VBoxContainer/ColorRect/Area2D"]
 position = Vector2(0, 32)
 shape = SubResource("RectangleShape2D_7v4yl")
+
+[node name="HSeparator" type="HSeparator" parent="Control/InputNode/VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Control/InputNode/VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "1236"
+
+[node name="HSeparator2" type="HSeparator" parent="Control/InputNode/VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect2" type="ColorRect" parent="Control/InputNode/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.678431, 0.254902, 0.254902, 0.407843)
 
 [node name="Input" type="Control" parent="Control"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[connection signal="area_entered" from="Control/InputNode/ColorRect2/Area2D" to="Control/InputNode/ColorRect2/Area2D" method="_on_area_entered"]
+[connection signal="area_entered" from="Control/InputNode/VBoxContainer/ColorRect/Area2D" to="Control/InputNode/VBoxContainer/ColorRect/Area2D" method="_on_area_entered"]

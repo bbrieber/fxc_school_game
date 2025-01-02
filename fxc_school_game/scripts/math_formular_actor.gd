@@ -16,7 +16,7 @@ class_name MathFormularActor extends Node2D
 var locked :bool = false 
 var result:int = -1
 
-signal calculation_finished(result:bool) 
+signal calculation_finished(correct:bool,result:int) 
 # Called when the node enters the scene tree for the first time.
 var rng :RandomNumberGenerator= RandomNumberGenerator.new()
 
@@ -36,12 +36,12 @@ func _process(delta: float) -> void:
 	position.y = position.y + fall_speed*delta
 
 
-func _destroy_after_vfx(result:bool)->void:
+func _destroy_after_vfx(correct:bool)->void:
 	locked = true
 	particles.emitting = true
 	formular_holder.visible = false
 	await particles.finished
-	calculation_finished.emit(result)
+	calculation_finished.emit(correct,result)
 	queue_free()
 
 
@@ -55,13 +55,13 @@ func calculation_corrrect()->void:
 	particles.color = correct_color
 	_destroy_after_vfx(true)
 
-func check_formular(answer: int)->bool:
+func check_formular(answer: int)->void:
 	if locked:
-		return false
+		return
 	if answer == result:
 		calculation_corrrect()
-		return true
-	return false
 
 func _on_target_area_emtered(_area:Area2D) -> void:
+	if locked:
+		return
 	calculation_failed()
