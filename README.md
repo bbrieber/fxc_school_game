@@ -31,7 +31,7 @@ i = k+j
 - smaller
 
 # next steps
-
+- add android support
 - add score mechanic
 - create real Formulars
 - parse player input
