@@ -32,6 +32,4 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		check_formular(8)
 	elif event.is_action_pressed("fxc_9"):
 		check_formular(9)
-	elif event.is_action_pressed("fxc_"):
-		check_formular(0)
 	pass

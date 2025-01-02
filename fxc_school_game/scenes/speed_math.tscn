@@ -1,11 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://cijg7snywprv1"]
+[gd_scene load_steps=10 format=3 uid="uid://cijg7snywprv1"]
 
 [ext_resource type="Script" path="res://scripts/math_formular_actor.gd" id="1_medqu"]
 [ext_resource type="Script" path="res://scenes/input_processor.gd" id="2_2g4i3"]
+[ext_resource type="Texture2D" uid="uid://w6cvigdg4fy" path="res://sprites/vfx/vfx_dot.png" id="2_324vc"]
 [ext_resource type="Script" path="res://scripts/formular_target_area.gd" id="2_gdrju"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3nk2y"]
 size = Vector2(37, 23)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_77j3f"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Curve" id="Curve_t1s3l"]
+_data = [Vector2(0, 0.178233), 0.0, 2.5003, 0, 0, Vector2(0.789641, 0.522082), -3.64739, -3.64739, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_iiyba"]
+offsets = PackedFloat32Array(0, 0.365342, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.976821, 1, 1, 1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7v4yl"]
 size = Vector2(400, 66)
@@ -36,10 +49,15 @@ anchor_left = 0.5
 anchor_right = 0.5
 grow_horizontal = 2
 
-[node name="SpeedMath" type="Node2D" parent="Control/MathSpawn"]
+[node name="SpeedMath" type="Node2D" parent="Control/MathSpawn" node_paths=PackedStringArray("particles", "formular_holder")]
 script = ExtResource("1_medqu")
+fall_speed = 120.0
+failed_color = Color(1, 0.286275, 0.415686, 1)
+correct_color = Color(0, 0.921569, 0.223529, 1)
+particles = NodePath("VFX_Destroy")
+formular_holder = NodePath("FormularHolder")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MathSpawn/SpeedMath"]
+[node name="FormularHolder" type="HBoxContainer" parent="Control/MathSpawn/SpeedMath"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -49,15 +67,36 @@ offset_bottom = 23.0
 grow_horizontal = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Control/MathSpawn/SpeedMath/HBoxContainer"]
+[node name="Label" type="Label" parent="Control/MathSpawn/SpeedMath/FormularHolder"]
 layout_mode = 2
 text = "1+2="
 
-[node name="Area2D" type="Area2D" parent="Control/MathSpawn/SpeedMath"]
+[node name="CollisionArea" type="Area2D" parent="Control/MathSpawn/SpeedMath"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/MathSpawn/SpeedMath/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/MathSpawn/SpeedMath/CollisionArea"]
 position = Vector2(0, 12.5)
 shape = SubResource("RectangleShape2D_3nk2y")
+
+[node name="VFX_Destroy" type="CPUParticles2D" parent="Control/MathSpawn/SpeedMath"]
+material = SubResource("CanvasItemMaterial_77j3f")
+position = Vector2(0, 12.5)
+emitting = false
+amount = 48
+lifetime = 0.56
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.09
+texture = ExtResource("2_324vc")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 150.0
+initial_velocity_max = 250.0
+damping_min = 0.1
+damping_max = 0.2
+scale_amount_curve = SubResource("Curve_t1s3l")
+color = Color(0, 0.921569, 0.223529, 1)
+color_ramp = SubResource("Gradient_iiyba")
 
 [node name="InputNode" type="Control" parent="Control"]
 layout_mode = 1
@@ -92,4 +131,5 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[connection signal="area_entered" from="Control/MathSpawn/SpeedMath/CollisionArea" to="Control/MathSpawn/SpeedMath" method="_on_target_area_emtered"]
 [connection signal="area_entered" from="Control/InputNode/ColorRect2/Area2D" to="Control/InputNode/ColorRect2/Area2D" method="_on_area_entered"]

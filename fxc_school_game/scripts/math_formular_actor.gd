@@ -8,7 +8,8 @@ extends Node2D
 @export var failed_color:Color = Color.RED
 @export var correct_color:Color = Color.GREEN
 
-
+@export var particles : CPUParticles2D
+@export var formular_holder : Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,11 +22,23 @@ func _process(delta: float) -> void:
 
 
 func calculation_failed()->void:
-	pass
+	particles.color = failed_color
+	particles.emitting = true
+	formular_holder.visible = false
+	await particles.finished
+
+	queue_free()
 
 
 func calculation_corrrect()->void:
-	pass
+	particles.color = failed_color
+	particles.emitting = true
+	formular_holder.visible = false
+	await particles.finished
+	queue_free()
 
 func check_formular(answer: int)->bool:
 	return true
+
+func _on_target_area_emtered(_area:Area2D) -> void:
+	calculation_failed()
