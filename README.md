@@ -32,7 +32,6 @@ i = k+j
 
 # next steps
 
-- add success/failure logic
 - add score mechanic
 - create real Formulars
 - parse player input
