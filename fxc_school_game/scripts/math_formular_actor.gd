@@ -26,6 +26,8 @@ class_name MathFormularActor extends Node2D
 
 @export var formular_holder : Control
 
+@export_range(1,100) var iterations : int = 5
+
 
 var locked :bool = false 
 var result:int = -1
@@ -36,14 +38,20 @@ var rng :RandomNumberGenerator= RandomNumberGenerator.new()
 
 func _ready() -> void:
 
-	var x1 = rng.randi_range(0, max_number)
-	var x2 = rng.randi_range(0, max_number-x1)
+	var x1 = get_random_number(0, max_number)
+	var x2 = get_random_number(0, max_number-x1)
 	result = x1+x2
 	
 	var lbl := formular_holder.get_child(0) as Label
 	lbl.text = "%d + %d =" % [x1,x2]
 	pass # Replace with function body.
 
+
+func get_random_number(from:int,to:int)->int:
+	var num :int = 0
+	for i in range(iterations):
+		num += rng.randi_range(from, to)
+	return num / iterations
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
