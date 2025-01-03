@@ -32,6 +32,10 @@ i = k+j
 
 # next steps
 - add android support
+- get cool color theme
 - add score mechanic
 - create real Formulars
-- parse player input
+- add main menu
+- add high score
+- add game mode chooser
+- add user data 
