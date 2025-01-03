@@ -1,15 +1,29 @@
 class_name MathFormularActor extends Node2D
 
+@export_category("formular")
+
 @export var max_number:int = 20
 
 
 @export var fall_speed:float = 40
 
-@export var destroy_size_factor:float = 2
+
+@export_category("particles")
 @export var failed_color:Color = Color.RED
 @export var correct_color:Color = Color.GREEN
 
 @export var particles : CPUParticles2D
+@export var destroy_size_factor:float = 2
+
+
+@export_category("soud")
+@export var failed_sound:AudioStream
+@export var correct_sound:AudioStream
+
+@export var sound_player:AudioStreamPlayer2D
+
+@export_category("general")
+
 @export var formular_holder : Control
 
 
@@ -47,12 +61,16 @@ func _destroy_after_vfx(correct:bool)->void:
 
 func calculation_failed()->void:
 	particles.color = failed_color
+	sound_player.stream = failed_sound 
+	sound_player.play()
 	_destroy_after_vfx(false)
 
 
 
 func calculation_corrrect()->void:
 	particles.color = correct_color
+	sound_player.stream = correct_sound
+	sound_player.play()
 	_destroy_after_vfx(true)
 
 func check_formular(answer: int)->void:

@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cg1gqa30oqp7b"]
+[gd_scene load_steps=10 format=3 uid="uid://cg1gqa30oqp7b"]
 
 [ext_resource type="Script" path="res://scripts/math_formular_actor.gd" id="1_g22as"]
 [ext_resource type="Texture2D" uid="uid://w6cvigdg4fy" path="res://sprites/vfx/vfx_dot.png" id="2_qsinw"]
+[ext_resource type="AudioStream" uid="uid://ye4m3tau3txq" path="res://sfx/hitHurt.wav" id="2_uujvf"]
+[ext_resource type="FontFile" uid="uid://8pnrqlywrten" path="res://fonts/atma/Atma-Bold.ttf" id="2_xaaru"]
+[ext_resource type="AudioStream" uid="uid://844j3v5jwbl8" path="res://sfx/pickupCoin.wav" id="3_li8w0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3nk2y"]
 size = Vector2(37, 66)
@@ -18,13 +21,16 @@ point_count = 3
 offsets = PackedFloat32Array(0, 0.365342, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.976821, 1, 1, 1, 0)
 
-[node name="MathFormularActor" type="Node2D" node_paths=PackedStringArray("particles", "formular_holder")]
+[node name="MathFormularActor" type="Node2D" node_paths=PackedStringArray("particles", "sound_player", "formular_holder")]
 script = ExtResource("1_g22as")
 max_number = 100
 fall_speed = 120.0
 failed_color = Color(1, 0.286275, 0.415686, 1)
 correct_color = Color(0, 0.921569, 0.223529, 1)
 particles = NodePath("VFX_Destroy")
+failed_sound = ExtResource("2_uujvf")
+correct_sound = ExtResource("3_li8w0")
+sound_player = NodePath("AudioStreamPlayer2D")
 formular_holder = NodePath("FormularHolder")
 
 [node name="FormularHolder" type="HBoxContainer" parent="."]
@@ -39,6 +45,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="FormularHolder"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_xaaru")
 theme_override_font_sizes/font_size = 60
 text = "1+2="
 
@@ -70,5 +77,8 @@ scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_t1s3l")
 color = Color(0, 0.921569, 0.223529, 1)
 color_ramp = SubResource("Gradient_iiyba")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_uujvf")
 
 [connection signal="area_entered" from="CollisionArea" to="." method="_on_target_area_emtered"]
