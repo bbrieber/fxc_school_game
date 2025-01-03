@@ -9,6 +9,7 @@ var initialized:bool = false
 
 func _ready() -> void:
 	formular_controller.spawned_new_actor.connect(reset)
+	reset()
 
 func reset()->void:
 	initialized = false
@@ -58,3 +59,10 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		remove_digit()
 	check_formular()
 	pass
+
+
+func _on_number_pressed(num:int) -> void:
+	create_result(num)
+	check_formular()
+
+

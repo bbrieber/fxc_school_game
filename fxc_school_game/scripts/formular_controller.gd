@@ -27,3 +27,4 @@ func solve_formular(solution:int)-> void:
 
 func on_formular_actor_destroyed(_success:bool,_result:int)->void:
 	spawn_formular_actor()
+

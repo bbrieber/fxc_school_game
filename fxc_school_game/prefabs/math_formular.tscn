@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://w6cvigdg4fy" path="res://sprites/vfx/vfx_dot.png" id="2_qsinw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3nk2y"]
-size = Vector2(37, 23)
+size = Vector2(37, 66)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_77j3f"]
 blend_mode = 1
@@ -39,12 +39,13 @@ alignment = 1
 
 [node name="Label" type="Label" parent="FormularHolder"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 60
 text = "1+2="
 
 [node name="CollisionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
-position = Vector2(0, 12.5)
+position = Vector2(0, 34)
 shape = SubResource("RectangleShape2D_3nk2y")
 
 [node name="VFX_Destroy" type="CPUParticles2D" parent="."]
@@ -64,6 +65,8 @@ initial_velocity_min = 150.0
 initial_velocity_max = 250.0
 damping_min = 0.1
 damping_max = 0.2
+scale_amount_min = 2.0
+scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_t1s3l")
 color = Color(0, 0.921569, 0.223529, 1)
 color_ramp = SubResource("Gradient_iiyba")

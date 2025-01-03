@@ -1,9 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://cijg7snywprv1"]
+[gd_scene load_steps=29 format=3 uid="uid://cijg7snywprv1"]
 
 [ext_resource type="Script" path="res://scripts/formular_controller.gd" id="1_irbh7"]
 [ext_resource type="Script" path="res://scripts/input_processor.gd" id="2_2g4i3"]
 [ext_resource type="PackedScene" uid="uid://cg1gqa30oqp7b" path="res://prefabs/math_formular.tscn" id="2_cxiui"]
 [ext_resource type="Script" path="res://scripts/formular_target_area.gd" id="2_gdrju"]
+[ext_resource type="FontFile" uid="uid://8pnrqlywrten" path="res://fonts/atma/Atma-Bold.ttf" id="5_drcwj"]
+[ext_resource type="Texture2D" uid="uid://de6l5w43fi0qs" path="res://sprites/kenneys/keys/keyboard_1.png" id="5_jh3u8"]
+[ext_resource type="Texture2D" uid="uid://uxq5kf71gnm5" path="res://sprites/kenneys/keys/keyboard_1_outline.png" id="6_3boif"]
+[ext_resource type="Texture2D" uid="uid://b56b80nslnf0i" path="res://sprites/kenneys/keys/keyboard_2.png" id="7_f2ede"]
+[ext_resource type="Script" path="res://scripts/number_button.gd" id="7_qdlww"]
+[ext_resource type="Texture2D" uid="uid://cwwfu2k5qlihq" path="res://sprites/kenneys/keys/keyboard_2_outline.png" id="8_lhr84"]
+[ext_resource type="Texture2D" uid="uid://uhmep13otdj1" path="res://sprites/kenneys/keys/keyboard_3.png" id="9_tl1yo"]
+[ext_resource type="Texture2D" uid="uid://bnmgjc00ror48" path="res://sprites/kenneys/keys/keyboard_3_outline.png" id="10_ajora"]
+[ext_resource type="Texture2D" uid="uid://d2dcnpehciys2" path="res://sprites/kenneys/keys/keyboard_4.png" id="11_ef54m"]
+[ext_resource type="Texture2D" uid="uid://djiyjhs2lhjs8" path="res://sprites/kenneys/keys/keyboard_4_outline.png" id="12_u07m7"]
+[ext_resource type="Texture2D" uid="uid://wjdqkexw4nsb" path="res://sprites/kenneys/keys/keyboard_5.png" id="13_nygjj"]
+[ext_resource type="Texture2D" uid="uid://dxxfdpwe8r7oo" path="res://sprites/kenneys/keys/keyboard_5_outline.png" id="14_hqiwc"]
+[ext_resource type="Texture2D" uid="uid://cwkn83qdmd4is" path="res://sprites/kenneys/keys/keyboard_6.png" id="15_byhe7"]
+[ext_resource type="Texture2D" uid="uid://bv2aw2u8lqdrv" path="res://sprites/kenneys/keys/keyboard_6_outline.png" id="16_pagjn"]
+[ext_resource type="Texture2D" uid="uid://darqw3wrj5sqp" path="res://sprites/kenneys/keys/keyboard_backspace_icon_alternative.png" id="16_siimd"]
+[ext_resource type="Texture2D" uid="uid://bb2ap5s8mn8ok" path="res://sprites/kenneys/keys/keyboard_7.png" id="17_72ook"]
+[ext_resource type="Texture2D" uid="uid://dexhbkh1puflc" path="res://sprites/kenneys/keys/keyboard_7_outline.png" id="18_mts5k"]
+[ext_resource type="Texture2D" uid="uid://bm0fk6m247fai" path="res://sprites/kenneys/keys/keyboard_8.png" id="19_02uwk"]
+[ext_resource type="Texture2D" uid="uid://cjuaww7otkwwk" path="res://sprites/kenneys/keys/keyboard_8_outline.png" id="20_6tltj"]
+[ext_resource type="Texture2D" uid="uid://cty2k8o607ag1" path="res://sprites/kenneys/keys/keyboard_9.png" id="21_hom8e"]
+[ext_resource type="Texture2D" uid="uid://bvrbo7xbaulrv" path="res://sprites/kenneys/keys/keyboard_9_outline.png" id="22_lrdfd"]
+[ext_resource type="Texture2D" uid="uid://chxpr02w0bsx2" path="res://sprites/kenneys/keys/keyboard_0.png" id="23_0i8io"]
+[ext_resource type="Texture2D" uid="uid://87biqa410e5v" path="res://sprites/kenneys/keys/keyboard_0_outline.png" id="24_3ydxw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7v4yl"]
 size = Vector2(400, 66)
@@ -42,7 +65,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -157.0
+offset_top = -415.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("2_2g4i3")
@@ -51,24 +74,21 @@ label = NodePath("VBoxContainer/ColorRect/Label")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/InputNode"]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -271.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="Control/InputNode/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
 
 [node name="Area2D" type="Area2D" parent="Control/InputNode/VBoxContainer/ColorRect"]
-position = Vector2(584, 4)
 script = ExtResource("2_gdrju")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Control/InputNode/VBoxContainer/ColorRect/Area2D"]
-position = Vector2(0, 32)
+position = Vector2(360, 32)
 shape = SubResource("RectangleShape2D_7v4yl")
 
 [node name="HSeparator" type="HSeparator" parent="Control/InputNode/VBoxContainer/ColorRect"]
@@ -92,6 +112,8 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_drcwj")
+theme_override_font_sizes/font_size = 60
 text = "1236"
 
 [node name="HSeparator2" type="HSeparator" parent="Control/InputNode/VBoxContainer/ColorRect"]
@@ -109,9 +131,167 @@ layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.678431, 0.254902, 0.254902, 0.407843)
 
-[node name="Input" type="Control" parent="Control"]
-anchors_preset = 0
-offset_right = 40.0
+[node name="GridContainer" type="GridContainer" parent="Control/InputNode/VBoxContainer/ColorRect2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
 offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 7
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+
+[node name="Btn0" type="TextureButton" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer/PanelContainer"]
+layout_mode = 2
+texture_normal = ExtResource("23_0i8io")
+texture_pressed = ExtResource("24_3ydxw")
+stretch_mode = 0
+script = ExtResource("7_qdlww")
+
+[node name="PanelContainer2" type="PanelContainer" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+
+[node name="Btn1" type="TextureButton" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer/PanelContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("5_jh3u8")
+texture_pressed = ExtResource("6_3boif")
+stretch_mode = 0
+script = ExtResource("7_qdlww")
+num = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+
+[node name="Btn2" type="TextureButton" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer/PanelContainer3"]
+layout_mode = 2
+texture_normal = ExtResource("7_f2ede")
+texture_pressed = ExtResource("8_lhr84")
+stretch_mode = 0
+script = ExtResource("7_qdlww")
+num = 2
+
+[node name="PanelContainer4" type="PanelContainer" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+
+[node name="Btn3" type="TextureButton" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer/PanelContainer4"]
+layout_mode = 2
+texture_normal = ExtResource("9_tl1yo")
+texture_pressed = ExtResource("10_ajora")
+stretch_mode = 0
+script = ExtResource("7_qdlww")
+num = 3
+
+[node name="PanelContainer5" type="PanelContainer" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+
+[node name="Btn4" type="TextureButton" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer/PanelContainer5"]
+layout_mode = 2
+texture_normal = ExtResource("11_ef54m")
+texture_pressed = ExtResource("12_u07m7")
+stretch_mode = 0
+script = ExtResource("7_qdlww")
+num = 4
+
+[node name="PanelContainer11" type="PanelContainer" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="PanelContainer12" type="PanelContainer" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer"]
+custom_minimum_size = Vector2(128, 96)
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer/PanelContainer12"]
+layout_mode = 2
+texture_normal = ExtResource("16_siimd")
+stretch_mode = 4
+
+[node name="PanelContainer6" type="PanelContainer" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+
+[node name="Btn5" type="TextureButton" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer/PanelContainer6"]
+layout_mode = 2
+texture_normal = ExtResource("13_nygjj")
+texture_pressed = ExtResource("14_hqiwc")
+stretch_mode = 0
+script = ExtResource("7_qdlww")
+num = 5
+
+[node name="PanelContainer7" type="PanelContainer" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+
+[node name="Btn6" type="TextureButton" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer/PanelContainer7"]
+layout_mode = 2
+texture_normal = ExtResource("15_byhe7")
+texture_pressed = ExtResource("16_pagjn")
+stretch_mode = 0
+script = ExtResource("7_qdlww")
+num = 6
+
+[node name="PanelContainer8" type="PanelContainer" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+
+[node name="Btn7" type="TextureButton" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer/PanelContainer8"]
+layout_mode = 2
+texture_normal = ExtResource("17_72ook")
+texture_pressed = ExtResource("18_mts5k")
+stretch_mode = 0
+script = ExtResource("7_qdlww")
+num = 7
+
+[node name="PanelContainer9" type="PanelContainer" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+
+[node name="Btn8" type="TextureButton" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer/PanelContainer9"]
+layout_mode = 2
+texture_normal = ExtResource("19_02uwk")
+texture_pressed = ExtResource("20_6tltj")
+stretch_mode = 0
+script = ExtResource("7_qdlww")
+num = 8
+
+[node name="PanelContainer10" type="PanelContainer" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+
+[node name="Btn9" type="TextureButton" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer/PanelContainer10"]
+layout_mode = 2
+texture_normal = ExtResource("21_hom8e")
+texture_pressed = ExtResource("22_lrdfd")
+stretch_mode = 0
+script = ExtResource("7_qdlww")
+num = 9
+
+[node name="PanelContainer13" type="PanelContainer" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="PanelContainer14" type="PanelContainer" parent="Control/InputNode/VBoxContainer/ColorRect2/GridContainer"]
+custom_minimum_size = Vector2(128, 96)
+layout_mode = 2
 
 [connection signal="area_entered" from="Control/InputNode/VBoxContainer/ColorRect/Area2D" to="Control/InputNode/VBoxContainer/ColorRect/Area2D" method="_on_area_entered"]
+[connection signal="number_pressed" from="Control/InputNode/VBoxContainer/ColorRect2/GridContainer/PanelContainer/Btn0" to="Control/InputNode" method="_on_number_pressed"]
+[connection signal="number_pressed" from="Control/InputNode/VBoxContainer/ColorRect2/GridContainer/PanelContainer2/Btn1" to="Control/InputNode" method="_on_number_pressed"]
+[connection signal="number_pressed" from="Control/InputNode/VBoxContainer/ColorRect2/GridContainer/PanelContainer3/Btn2" to="Control/InputNode" method="_on_number_pressed"]
+[connection signal="number_pressed" from="Control/InputNode/VBoxContainer/ColorRect2/GridContainer/PanelContainer4/Btn3" to="Control/InputNode" method="_on_number_pressed"]
+[connection signal="number_pressed" from="Control/InputNode/VBoxContainer/ColorRect2/GridContainer/PanelContainer5/Btn4" to="Control/InputNode" method="_on_number_pressed"]
+[connection signal="number_pressed" from="Control/InputNode/VBoxContainer/ColorRect2/GridContainer/PanelContainer6/Btn5" to="Control/InputNode" method="_on_number_pressed"]
+[connection signal="number_pressed" from="Control/InputNode/VBoxContainer/ColorRect2/GridContainer/PanelContainer7/Btn6" to="Control/InputNode" method="_on_number_pressed"]
+[connection signal="number_pressed" from="Control/InputNode/VBoxContainer/ColorRect2/GridContainer/PanelContainer8/Btn7" to="Control/InputNode" method="_on_number_pressed"]
+[connection signal="number_pressed" from="Control/InputNode/VBoxContainer/ColorRect2/GridContainer/PanelContainer9/Btn8" to="Control/InputNode" method="_on_number_pressed"]
+[connection signal="number_pressed" from="Control/InputNode/VBoxContainer/ColorRect2/GridContainer/PanelContainer10/Btn9" to="Control/InputNode" method="_on_number_pressed"]
