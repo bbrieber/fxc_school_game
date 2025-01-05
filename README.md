@@ -39,3 +39,4 @@ i = k+j
 - add high score
 - add game mode chooser
 - add user data 
+find color scheme
