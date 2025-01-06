@@ -1,4 +1,4 @@
-# fxc_school_game
+u# fxc_school_game
 
 ## Speed calculator
 fill the missing fields of a math Formular in a given time frame
@@ -32,6 +32,7 @@ i = k+j
 
 # next steps
 - add android support
+- test phone deployment
 - get cool color theme
 - add score mechanic
 - create real Formulars
