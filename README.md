@@ -1,4 +1,4 @@
-u# fxc_school_game
+# fxc_school_game
 
 ## Speed calculator
 fill the missing fields of a math Formular in a given time frame
@@ -15,6 +15,17 @@ k = rand(0, n)
 j = rand(0, n - k)
 i = k+j
 ```
+
+subtraction
+```
+k - j =  i
+
+n = max num
+k = rand(0, n)
+j = rand(0, k)
+i = k-j
+```
+
 
 ## modes minmal
 - addition 
