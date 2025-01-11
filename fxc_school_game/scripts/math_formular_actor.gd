@@ -9,6 +9,7 @@ class_name MathFormularActor extends Node2D
 
 
 @export_category("particles")
+@export var default_color:Color = Color.BLACK
 @export var failed_color:Color = Color.RED
 @export var correct_color:Color = Color.GREEN
 
@@ -44,6 +45,7 @@ func _ready() -> void:
 	
 	var lbl := formular_holder.get_child(0) as Label
 	lbl.text = "%d + %d =" % [x1,x2]
+	lbl.set("theme_override_colors/font_color",default_color)
 	pass # Replace with function body.
 
 

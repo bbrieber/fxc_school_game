@@ -25,6 +25,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.976821, 1, 1, 1, 0)
 script = ExtResource("1_g22as")
 max_number = 100
 fall_speed = 150.0
+default_color = Color(0, 0.921569, 0.223529, 1)
 failed_color = Color(1, 0.286275, 0.415686, 1)
 correct_color = Color(0, 0.921569, 0.223529, 1)
 particles = NodePath("VFX_Destroy")
